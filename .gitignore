@@ -26,3 +26,6 @@ dist-ssr
 
 */scenes*.ply
 *-20*/
+*.ply
+*.splat
+bonsai/
