@@ -49,6 +49,7 @@ export default async function init(
     fps: 0.0,
     gaussian_multiplier: 1,
     renderer: 'pointcloud',
+    camera_control: 'orbit', 
     ply_file: '',
     cam_file: '',
   };
@@ -98,7 +99,7 @@ export default async function init(
     });
   }
   {
-    pane.addInput(params, 'cam_file', {
+pane.addInput(params, 'cam_file', {
       view: 'file-input',
       lineCount: 3,
       filetypes: ['.json'],
@@ -113,6 +114,17 @@ export default async function init(
       }else{
         cam_file_loaded = false;
       }
+    });
+  }
+  {
+    pane.addInput(params, 'camera_control', {
+      label: 'Camera Control',
+      options: {
+        orbit: 'orbit',
+        fps: 'fps',
+      }
+    }).on('change', (e) => {
+      control.setMode(e.value as 'orbit' | 'fps');
     });
   }
   {
